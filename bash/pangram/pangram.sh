@@ -28,10 +28,9 @@ main () {
         echo "false"
     elif [[ $# -eq 1 ]]; then
         val=$(echo "$1" | awk '{print tolower($0)}')
-        chars=( {a..z} )
         pangram="true"
-        for ((i=0; i<${#chars[@]}; i++)); do
-            if [[ $val != *${chars[i]}* ]]; then
+        for char in {a..z}; do
+            if [[ $val != *$char* ]]; then
                 pangram="false"
                 break
             fi
